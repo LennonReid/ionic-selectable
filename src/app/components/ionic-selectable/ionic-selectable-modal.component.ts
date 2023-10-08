@@ -3,12 +3,21 @@ import { IonContent, IonInfiniteScroll, IonSearchbar, NavParams, IonicModule } f
 import { IonicSelectableComponent } from './ionic-selectable.component';
 import { FormsModule } from '@angular/forms';
 import { NgIf, NgTemplateOutlet, NgFor, NgClass, NgStyle } from '@angular/common';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @Component({
-    selector: 'ionic-selectable-modal',
-    templateUrl: './ionic-selectable-modal.component.html',
-    standalone: true,
-    imports: [IonicModule, NgIf, NgTemplateOutlet, FormsModule, NgFor, NgClass, NgStyle]
+  selector: 'ionic-selectable-modal',
+  templateUrl: './ionic-selectable-modal.component.html',
+  styles: [
+    `
+      cdk-virtual-scroll-viewport {
+        height: 100%;
+        width: 100%;
+      }
+    `,
+  ],
+  standalone: true,
+  imports: [IonicModule, NgIf, NgTemplateOutlet, FormsModule, NgFor, NgClass, NgStyle, ScrollingModule],
 })
 export class IonicSelectableModalComponent implements AfterViewInit {
   @ViewChild(IonContent)
